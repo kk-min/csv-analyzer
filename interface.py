@@ -30,7 +30,7 @@ def interface_main():
     if 'csv_data' not in st.session_state:
        st.session_state.csv_data = None
     
-    st.title('CSV Analayzer')
+    st.title('CSV Analyzer')
     get_file();
     st.selectbox(label='X Axis:', options=st.session_state.column_list, key='x_axis')
     st.selectbox(label='Y Axis:', options=st.session_state.column_list, key='y_axis')
