@@ -26,7 +26,7 @@ def interface_main():
         st.session_state.uploaded_file = None
 
     if 'column_list' not in st.session_state:
-       st.session_state.column_list = ['Age', 'Gender']
+       st.session_state.column_list = []
     
     
     if 'csv_data' not in st.session_state:
