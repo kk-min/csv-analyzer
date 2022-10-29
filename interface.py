@@ -1,7 +1,6 @@
 import streamlit as st
 import seaborn as sb
 import matplotlib.pyplot as plt
-import pandas as pd
 from csv_processor import *
 from io import StringIO
 
@@ -38,7 +37,7 @@ def interface_main():
     st.selectbox(label='X Axis:', options=st.session_state.column_list, key='x_axis')
     st.selectbox(label='Y Axis:', options=st.session_state.column_list, key='y_axis')
     
-    if(st.session_state.csv_data != None):
+    if(st.session_state.csv_data is not None):
         fig = plt.figure(figsize=(10,4))
         sb.lineplot(x=st.session_state.x_axis, y=st.session_state.y_axis, data=st.session_state.csv_data)
         st.pyplot(fig)
