@@ -21,6 +21,20 @@ def set_csv_data(data):
 def set_column_list(data):
     st.session_state.column_list = data
 
+def plot_graph(selected_plot):
+    fig = plt.figure(figsize=(10,6))
+    try:
+        if (selected_plot == 'Line'):
+            sb.lineplot(x=st.session_state.x_axis, y=st.session_state.y_axis, data=st.session_state.csv_data)
+            st.pyplot(fig)
+        elif (selected_plot == 'Bar'):
+            sb.barplot(x=st.session_state.x_axis, y=st.session_state.y_axis, data=st.session_state.csv_data)
+            st.pyplot(fig)
+        else:
+            return
+    except:
+        st.text('Error: Please select a valid column for the corresponding plot type!')
+
 def interface_main():
     if 'uploaded_file' not in st.session_state:
         st.session_state.uploaded_file = None
@@ -36,8 +50,8 @@ def interface_main():
     get_file();
     st.selectbox(label='X Axis:', options=st.session_state.column_list, key='x_axis')
     st.selectbox(label='Y Axis:', options=st.session_state.column_list, key='y_axis')
-    
+    st.selectbox(label='Plot type:', options=['Line', 'Bar'], key='plot_type', disabled=(st.session_state.uploaded_file is None))
     if(st.session_state.csv_data is not None):
-        fig = plt.figure(figsize=(10,4))
-        sb.lineplot(x=st.session_state.x_axis, y=st.session_state.y_axis, data=st.session_state.csv_data)
-        st.pyplot(fig)
+        selected_plot = st.session_state.plot_type
+        plot_graph(selected_plot)
+         
