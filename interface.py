@@ -27,6 +27,7 @@ def set_column_list(data):
 
 
 def plot_graph(selected_plot):
+    plt.style.use("dark_background")
     fig = plt.figure(figsize=(10, 6))
     try:
         if selected_plot == "Line":
