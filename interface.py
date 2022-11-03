@@ -1,4 +1,3 @@
-from attr import NOTHING
 import streamlit as st
 import seaborn as sb
 import matplotlib.pyplot as plt
